@@ -1,0 +1,526 @@
+/* Base styles, nav, container, and blog styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background: #fff;
+    color: #333;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    transition: background 0.3s, color 0.3s;
+}
+#root, .container {
+    min-height: calc(100vh - 64px);
+    box-sizing: border-box;
+    height: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+@media (max-width: 600px) {
+    .container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+/* Navigation and burger menu styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #333 60%, #007bff 100%);
+    color: white;
+    padding: 1rem;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+nav h1 {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.nav-links a, .register-btn {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+}
+.nav-links a.active, .register-btn.active {
+    background-color: #007bff;
+    color: #fff;
+}
+.nav-links a:hover, .register-btn:hover {
+    background: #0056b3;
+    color: #fff;
+}
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        width: 180px;
+        border-radius: 5px;
+        padding: 1rem;
+        z-index: 100;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .burger {
+        display: flex;
+    }
+}
+
+button, .like-btn, .comment-btn, .register-btn {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: none;
+    background: linear-gradient(90deg, #007bff 60%, #0056b3 100%);
+    color: white;
+    border-radius: 5px;
+    transition: background 0.2s, box-shadow 0.2s;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+button:hover, .like-btn:hover, .comment-btn:hover, .register-btn:hover {
+    background: linear-gradient(90deg, #0056b3 60%, #007bff 100%);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.blog-header {
+    margin-bottom: 2rem;
+}
+.blog-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.blog-controls input, .blog-controls select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+.blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.blog-post {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    transition: box-shadow 0.2s, background 0.2s;
+    position: relative;
+    margin-bottom: 1.5rem;
+    overflow: auto;
+}
+.blog-post:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    background: #e9ecef;
+}
+.blog-post .post-title {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+.blog-post .post-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+.blog-post .post-content {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    word-break: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+.blog-post .post-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Ensure comment content wraps and stays in area */
+.comment-content {
+    word-break: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+.comment {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+    overflow: auto;
+}
+.comment:last-child {
+    border-bottom: none;
+}
+.comment-author {
+    font-weight: bold;
+    color: #007bff;
+}
+.comment-text {
+    margin-left: 0.5rem;
+}
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+    margin-top: 1rem;
+}
+.map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border: 0;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 3000 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: calc(100% - 2rem);
+    width: auto;
+    box-sizing: border-box;
+}
+.modal {
+    background: #fff;
+    color: #222;
+    border-radius: 12px;
+    max-width: 90vw;
+    width: auto;
+    max-height: 90vh;
+    height: auto;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 3001 !important;
+    outline: none;
+    display: block;
+    overflow-y: auto;
+    animation: modalPop 0.2s;
+}
+@keyframes modalPop {
+    from { transform: scale(0.95); opacity: 0.5; }
+    to { transform: scale(1); opacity: 1; }
+}
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90vw;
+    position: relative;
+}
+.modal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+}
+.dynamic-modal-below .modal {
+    z-index: 3001 !important;
+}
+
+/* Add-post and blog-posts margin and width */
+.add-post,
+.blog-posts,
+.footer-spacer,
+#searchInput,
+#searchModal {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: calc(100% - 2rem);
+    width: auto;
+    box-sizing: border-box;
+}
+
+/* Responsive: keep margin fixed, but allow max-width for large screens if needed */
+@media (min-width: 800px) {
+    .add-post,
+    .blog-posts,
+    .modal-overlay,
+    .footer-spacer,
+    #searchInput,
+    #searchModal {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        max-width: calc(100% - 2rem);
+        width: auto;
+    }
+}
+@media (max-width: 799px) {
+    .add-post,
+    .blog-posts,
+    .modal-overlay,
+    .footer-spacer,
+    #searchInput,
+    #searchModal {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        max-width: calc(100% - 2rem);
+        width: auto;
+    }
+}
+
+.scroll-to-top {
+    margin-top: 2rem;
+    display: none; /* Hidden by default, shown via JS */
+}
+
+/* Footer styles */
+footer {
+    margin-top: auto;
+    width: 100%;
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+}
+.footer-spacer {
+    height: 70px;
+}
+
+/* Responsive form row for add-post */
+.add-post .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.add-post .form-row input[type="text"],
+.add-post .form-row input[type="date"] {
+    flex: 1 1 150px;
+    min-width: 0;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Responsive textarea */
+.add-post textarea,
+.comment-input {
+    width: 100%;
+    min-height: 120px;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    margin-top: 1rem;
+    word-break: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* Comment row */
+.comment-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Delete button */
+.delete-btn {
+    margin-top: 0.5rem;
+    background: linear-gradient(90deg, #dc3545 60%, #b52a37 100%);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+.delete-btn:hover {
+    background: linear-gradient(90deg, #b52a37 60%, #dc3545 100%);
+}
+
+/* Nav links responsive for extra small screens */
+@media (max-width: 600px) {
+    .nav-links a, .register-btn {
+        color: #222;
+    }
+    .nav-links a.active, .register-btn.active {
+        background-color: #007bff;
+        color: #fff;
+    }
+    .nav-links {
+        flex-direction: column;
+        display: none;
+        background: #fff;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        padding: 1rem;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .add-post input,
+    .add-post textarea,
+    .comment-row input,
+    .comment-input {
+        font-size: 1rem;
+    }
+    .modal {
+        width: 95vw;
+        padding: 1rem;
+    }
+}
+@media (max-width: 400px) {
+    .modal {
+        width: 99vw;
+        padding: 0.5rem;
+    }
+}
+
+/* Dark mode styles */
+.dark-mode {
+    background-color: #222 !important;
+    color: white !important;
+}
+.dark-mode .blog-post {
+    background: #333;
+    color: #f8f9fa;
+    border: 1px solid #555;
+}
+.dark-mode .modal-content, .dark-mode .modal {
+    background: #222;
+    color: #f8f9fa;
+}
+.dark-mode .comment-section {
+    background: #222;
+    color: #f8f9fa;
+    border: 1px solid #555;
+}
+.dark-mode nav {
+    background: linear-gradient(90deg, #222 60%, #007bff 100%);
+}
+.dark-mode .nav-links a, .dark-mode .register-btn {
+    color: #fff;
+}
+.dark-mode .nav-links a.active, .dark-mode .register-btn.active {
+    background: #007bff;
+    color: #fff;
+}
+.dark-mode .add-post,
+.dark-mode .blog-posts,
+.dark-mode .modal-overlay,
+.dark-mode .footer-spacer,
+.dark-mode #searchInput,
+.dark-mode #searchModal {
+    background: #222;
+    color: #f8f9fa;
+}
+
+/* Contact form styles for full-width message box */
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+#contactForm input[type="email"],
+#contactForm input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+#contactForm textarea {
+    width: 100%;
+    min-height: 120px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+@media (max-width: 600px) {
+    #contactForm input,
+    #contactForm textarea {
+        font-size: 1rem;
+    }
+}
+
+/* Registration modal style improvements */
+#registerModal input[type="text"],
+#registerModal input[type="password"],
+#registerModal select {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+#registerModal label {
+    font-weight: 500;
+}
+#registerModal button[type="submit"] {
+    margin-top: 0.5rem;
+    width: 100%;
+}
+#registerModal button[type="button"] {
+    width: 100%;
+}

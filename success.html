@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Success - BlogSphere</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script>
+        // Display thank you message with user's name from query string
+        document.addEventListener('DOMContentLoaded', function () {
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param) || 'Friend';
+            }
+            const name = getQueryParam('name');
+            document.getElementById('thankYouName').textContent = name;
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <h1>BlogSphere</h1>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+        </div>
+    </nav>
+    <main class="container">
+        <section>
+            <h2>Thank You, <span id="thankYouName">Friend</span>!</h2>
+            <p>Your message has been sent successfully. We appreciate your feedback and will get back to you soon.</p>
+            <p>If your inquiry is urgent, please call us at <a href="tel:+442084611323">+442084611323</a> or email <a href="mailto:info@blogzone.com">info@blogzone.com</a>.</p>
+            <a href="index.html" class="like-btn">Return Home</a>
+        </section>
+    </main>
+</body>
+</html>

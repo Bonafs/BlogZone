@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogSphere - Home</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/script.js" defer></script>  
+</head>
+
+<body>
+    <nav>
+        <h1>BlogSphere</h1>
+        <button id="themeToggleBtn">Toggle Dark Mode</button>
+        <div class="burger" id="burgerMenu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" class="active">Home</a>
+            <a href="blog.html">Blog</a>
+            <button id="registerBtn" class="register-btn">Register</button>
+        </div>
+    </nav>
+
+    <!-- Registration Modal -->
+    <div id="registerModalOverlay" class="modal-overlay" style="display:none;">
+        <div id="registerModal" class="modal" tabindex="1" style="max-width:350px;">
+            <h3>Register for BlogSphere</h3>
+            <form id="registerForm" autocomplete="off">
+                <div style="margin-bottom:1rem;">
+                    <label for="registerName">First Name:</label>
+                    <input type="text" id="registerName" name="registerName" required autocomplete="off"
+                        style="width:100%;padding:0.5rem;margin-top:0.25rem;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label for="registerRole">Role:</label>
+                    <select id="registerRole" name="registerRole" required
+                        style="width:100%;padding:0.5rem;margin-top:0.25rem;">
+                        <option value="user" selected>User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label for="registerPassword">Password:</label>
+                    <input type="password" id="registerPassword" name="registerPassword" required autocomplete="off"
+                        style="width:100%;padding:0.5rem;margin-top:0.25rem;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label for="registerPassword2">Confirm Password:</label>
+                    <input type="password" id="registerPassword2" name="registerPassword2" required autocomplete="off"
+                        style="width:100%;padding:0.5rem;margin-top:0.25rem;">
+                </div>
+                <div id="registerError" style="color:red;margin-bottom:1rem;"></div>
+                <button type="submit"
+                    style="padding:0.5rem 1rem;border-radius:5px;border:none;background:#007bff;color:#fff;cursor:pointer;width:100%;">Register</button>
+                <button type="button" id="registerCancelBtn"
+                    style="margin-top:0.5rem;padding:0.5rem 1rem;border-radius:5px;border:none;background:#6c757d;color:#fff;cursor:pointer;width:100%;">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2>About BlogZone</h2>
+            <p>
+                BlogZone is a modern, responsive platform for bloggers to share, read, and interact with blog
+                posts.
+                Enjoy dynamic blog filtering, interactive posts, and a seamless experience across all devices.
+            </p>
+        </section>
+
+        <!-- Blog Section (optional: include a preview or link to blog.html) -->
+        <section id="blog-preview">
+            <h2>Latest Blog Posts</h2>
+            <p>Check out our <a href="blog.html">Blog</a> for the latest posts, tech trends, and lifestyle tips!</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form id="contactForm" autocomplete="off">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <div>
+                <p><strong>Address:</strong> BlogZone, Amberley road, westminster, London W9 2JJ</p>
+                <p><strong>Phone:</strong> <a href="tel:+442084611323">+442084611323</a></p>
+                <p><strong>Email:</strong> <a href="mailto:info@blogzone.com">info@blogzone.com</a></p>
+            </div>
+            <div class="map-responsive">
+                <iframe src="https://www.google.com/maps?q=Amberley+road,+Westminster,+London+W9+2JJ&output=embed"
+                    width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+    </main>
+
+    <div class="footer-spacer"></div>
+    <footer>
+        <p>&copy; 2025 CodeMe. All rights reserved.</p>
+    </footer>
+   
+</body>
+
+</html>
